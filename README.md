@@ -13,8 +13,7 @@ Then install the wheel file as follows
 ```bash
 pip install abpandas-VERSION-py3-none-any.whl
 ```
-
-Once installed, you can no wimply import $ABPandas$ into your python script as $abp$
+Once installed, you can no wimply import `ABPandas` into your python script as `abp`
 ```python
 import ABPandas as abp
 ```
