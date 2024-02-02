@@ -20,10 +20,12 @@ import ABPandas as abp
 
 ## Classes
 
-### abp.Agent
-properties: dictionary, default= {}
-    the properties of the agent object
-__id: int
-    a unique id given to each agent (accessed by the Model class when creating the Agent)
-location_index: int, default= None
-    the index to which the agent is assigned (accessed by the Model class when creating or moving the Agent)
+### `abp.Agent`
+properties: dictionary, default= {}  
+    the properties of the agent object  
+__id: int  
+    a unique id given to each agent (accessed by the Model class when creating the Agent)  
+location_index: int, default= None  
+    the index to which the agent is assigned (accessed by the Model class when creating or moving the Agent)  
+
+### `abp.Agent`
