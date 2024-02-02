@@ -21,11 +21,11 @@ import ABPandas as abp
 ## Classes
 
 ### `abp.Agent(properties)`
-- properties: dictionary, default= {}  
+- `properties`: dictionary, default= {}  
     - the properties of the agent object 
-- location_index: int, default= None  
+- `location_index`: int, default= None  
     - the index to which the agent is assigned (accessed by the Model class when creating or moving the Agent)
-- my_class: str
+- `my_class`: str
     - the name of the agent class in the model (must be defined as a string in the `__init__` function of the child class definition)
 
 An eample of a child class initialisation
