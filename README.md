@@ -1,5 +1,4 @@
-# ABPandas Documentation
-## Installation
+# ABPandas Installation
 Install using pip as follows
 ```bash
 pip install abpandas
@@ -14,9 +13,9 @@ Once installed, you can import `ABPandas` into your python script as `abp`
 import ABPandas as abp
 ```
 
-## Classes
+# Classes
 
-### Agent `abp.Agent(properties)`
+## Agent `abp.Agent(properties)`
 - `properties`: dictionary, default= {}  
     - the properties of the agent object (must be a dictionary input for the abp.Model methods to function properly)
 - `location_index`: int, default= None  
@@ -24,7 +23,7 @@ import ABPandas as abp
 - `my_class`: str
     - the name of the agent class in the model (must be defined as a string in the `__init__` function of the child class definition)
 
-#### Examples
+### Examples
 Child class definition of name "Class_name"
 ```python
 class Class_name(abp.Agent):
@@ -44,22 +43,22 @@ Outcome ("Class_name [id]"):
 Class_name 0
 ```
 
-### Model `abp.Model()`
+## Model `abp.Model()`
 - ``
 
-## Non-class methods
-### `create_patches(n_x, n_y, file_directory)`
+# Non-class methods
+## `create_patches(n_x, n_y, file_directory)`
 (1) Draws a grid of patches as a geopandas dataframe, (2) attaches to each an `"i"` and a `"j"` attribute consituting their location in x and y respectively and (3) saves the geopandas dataframe as a shapefile
-#### Parameters
+### Parameters
 - `n_x`: int
     - number of polygons in the x-axis
 - `n_y`: int
     - number of polygons in the y-axis
 - `file_directory`: str
     - the full directory of the saved file (must end in .shp)
-#### Returns
+### Returns
 - geopandas object
-#### Example
+### Example
 Create a 50 x 50 grid, save it to the python file directory and print the outcome.
 ```python
 import abpandas as abp
