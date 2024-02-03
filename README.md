@@ -2,8 +2,8 @@
 1. [Installation](#installation)  
 2. [Classes](#classes)  
     2.1. [Agent](#agent-abpagentproperties)  
-    2.2. [Model](#model-abpmodel) 
-    [create_agent](#create_agentproperties) [create_agents](#create_agentproperties) [add_agent](#add_agentagent-loc_index) [add_agents](#add_agentagent-loc_index) [agents_with_id](#agents_with_idid) [agents_with_props](#agents_with_propscondition) [agents_at](#agents_atloc_index) [move_agent](#move_agentagent-new_loc_index) [move_agents](#move_agentsagents-new_loc_index) [remove_agent](#remove_agentagent) [remove_agents](#remove_agentsagents) [save_space](#save_spacefile_directory) [index_at_ij](#index_at_iji-j) [indices_in_radius](#indices_in_radiuscentre-radius-outline_only-return_patches) [indexes_in_radius](#indices_in_radiuscentre-radius-outline_only-return_patches) [distance](#distancea-b)
+    2.2. [Model](#model-abpmodel) \
+    [create_agent](#create_agentproperties)  [create_agents](#create_agentproperties)  [add_agent](#add_agentagent-loc_index)  [add_agents](#add_agentagent-loc_index)  [agents_with_id](#agents_with_idid)  [agents_with_props](#agents_with_propscondition)  [agents_at](#agents_atloc_index)  [move_agent](#move_agentagent-new_loc_index)  [move_agents](#move_agentsagents-new_loc_index)  [remove_agent](#remove_agentagent)  [remove_agents](#remove_agentsagents)  [save_space](#save_spacefile_directory)  [index_at_ij](#index_at_iji-j)  [indices_in_radius](#indices_in_radiuscentre-radius-outline_only-return_patches)  [indexes_in_radius](#indices_in_radiuscentre-radius-outline_only-return_patches)  [distance](#distancea-b)
 3. [Non-class methods](#non-class-methods)
 
 # Installation
