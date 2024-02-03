@@ -1,16 +1,12 @@
 # ABPandas Documentation
-AB
 ## Installation
 Install using pip as follows
 ```bash
 pip install abpandas
 ```
-You can also download a wheel file from [PYPI](https://pypi.org/project/abpandas/#files). To install the wheel file first install `wheel` as follows
+You can also download a wheel file from [PYPI](https://pypi.org/project/abpandas/#files). First, install `wheel` and then install the wheel file as follows
 ```bash
 pip install wheel
-```
-Then install the wheel file as follows
-```bash
 pip install abpandas-VERSION-py3-none-any.whl
 ```
 Once installed, you can no wimply import `ABPandas` into your python script as `abp`
@@ -39,3 +35,4 @@ class Child_class_name(abp.Agent):
 ```
 
 ### `abp.Space()`
+- ``
