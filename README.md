@@ -1,4 +1,11 @@
-# ABPandas Installation
+# ABPandas Documentation
+1. [Installation](#installation)  
+2. [Classes](#classes)  
+3. [Agent](#agent-abpagentproperties)  
+4. [Model](#model-abpmodel)  
+5. [Non-class methods](#non-class-methods)
+
+# Installation
 Install using pip as follows
 ```bash
 pip install abpandas
