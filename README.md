@@ -16,29 +16,39 @@ import ABPandas as abp
 
 ## Classes
 
-### `abp.Agent(properties)`
+### Agent `abp.Agent(properties)`
 - `properties`: dictionary, default= {}  
-    - the properties of the agent object 
+    - the properties of the agent object (must be a dictionary input for the abp.Model methods to function properly)
 - `location_index`: int, default= None  
     - the index to which the agent is assigned (accessed by the Model class when creating or moving the Agent)
 - `my_class`: str
     - the name of the agent class in the model (must be defined as a string in the `__init__` function of the child class definition)
 
-An eample of a child class initialisation
+#### Examples
+Child class definition of name "Class_name"
 ```python
-class Child_class_name(abp.Agent):
+class Class_name(abp.Agent):
     def __init__(self, properties="default"):
         # pass the values to the parent agent
         super().__init__(properties)
         # pass the child class name to my_class 
-        self.my_class = "Child_class_name"
+        self.my_class = "Class_name"
+```
+Initialising an object of type Class_name and printing it.
+```python
+object = Class_name()
+print(object)
+```
+Outcome ("Class_name <id>"):
+```bash
+Class_name 0
 ```
 
-### `abp.Model()`
+### Model `abp.Model()`
 - ``
 
 ## Non-class methods
-### `abp.create_patches(n_x, n_y, file_directory)`
+### `create_patches(n_x, n_y, file_directory)`
 (1) Draws a grid of patches as a geopandas dataframe, (2) attaches to each an `"i"` and a `"j"` attribute consituting their location in x and y respectively and (3) saves the geopandas dataframe as a shapefile
 #### Parameters
 - `n_x`: int
