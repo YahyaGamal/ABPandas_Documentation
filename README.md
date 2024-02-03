@@ -2,7 +2,8 @@
 1. [Installation](#installation)  
 2. [Classes](#classes)  
     2.1. [Agent](#agent-abpagentproperties)  
-    2.2. [Model](#model-abpmodel)  
+    2.2. [Model](#model-abpmodel) 
+    [create_agent](#create_agentproperties) [create_agents](#create_agentproperties) [add_agent](#add_agentagent-loc_index) [add_agents](#add_agentagent-loc_index) [agents_with_id](#agents_with_idid) [agents_with_props](#agents_with_propscondition) [agents_at](#agents_atloc_index) [move_agent](#move_agentagent-new_loc_index) [move_agents](#move_agentsagents-new_loc_index) [remove_agent](#remove_agentagent) [remove_agents](#remove_agentsagents) [save_space](#save_spacefile_directory) [index_at_ij](#index_at_iji-j) [indices_in_radius](#indices_in_radiuscentre-radius-outline_only-return_patches) [indexes_in_radius](#indices_in_radiuscentre-radius-outline_only-return_patches) [distance](#distancea-b)
 3. [Non-class methods](#non-class-methods)
 
 # Installation
@@ -57,7 +58,7 @@ Class_name 0
     - a list of agents currently in the model
 
 ### `create_agent(properties)`
-### `create_agents(self, N, properties`
+### `create_agents(N, properties`
 Create an agent or an `N` number of agents with an input dictionary of properties.
 #### Parameters
 - N: int
@@ -87,38 +88,84 @@ an Agent object (if id is int) or a list of Agent objects (if id is list)
 
 ### `agents_with_props(condition)`
 Search for agents based on their properties
-Parameters
-----------
+#### Parameters
 - condition: str
     - a string representing a condition to be evaluated across all agents in the model
     - the properties are accessed as `agent.props["property_name"]`
 - condition: function
     - a function taking in an abp.Agent and returning true if the condition is satisfied
-Returns
--------
+#### Returns
 list of Agent objects fulfilling the condition
 
 ### `agents_at(loc_index)`
-    - Find agents based on their location index
+Find agents based on their location index
+#### Parameters
+- loc_index: int
+    - the index of the polygon in the space
+#### Returns
+- list of Agent objects located in input index
 
 ### `move_agent(agent, new_loc_index)`
 ### `move_agents(agents, new_loc_index)`
-    - Move an agent to a new location
+Move an agent to a new location
+#### Parameters
+- agent(s): an Agent object or a list of Agent objects 
+    - the agent(s) to move to a new location
+- new_loc_index: int
+    - the index of the polygon in the sapce to which agents will move
 
 ### `remove_agent(agent)`
 ### `remove_agents(agents)`
-    - Removes agents from the model
+Removes agents from the model
+#### Parameters
+- agent(s): an Agent object or a list of Agent objects 
+    - the agents to remove from the model
 
 ### `save_space(file_directory)`
-    - Saves the space to a shape fi
+Saves the space to a shape file or a pkl file
+#### Parameters
+- file_directory: str
+    - the full directory of the file to be saved (must end in .shp or .pkl)
 
 ### `index_at_ij(i, j)`
+Finds the patches based on their i and j location (i and j are the indices of a patch in x-direction and y-direction respectively).  
+i and j are created during the create_patches() function.
+#### Parameters
+- i: int
+    - the index of the patch in x-direction (starts from 1)
+- j: int
+    - the index of the patch in y-direction (starts from 1)
+#### Returns
+- int index of the polygon in the abpandas.space geodataframe
     
 ### `indices_in_radius(centre, radius, outline_only, return_patches)`
 ### `indexes_in_radius(centre, radius, outline_only, return_patches)`
+finds the patches (polygons) within a given radius
+#### Parameters
+- centre: Agent or int or a shapely polygon
+    - central agent, patch index or shapely polygon
+- radius: int or float
+    - the radius from the centre
+- outline_only: bool, default=False
+    - limit the outcome to the outline of the create_space generated polygons
+- return_patches: bool, default=False
+    - return a list of shapely geometries instead of indices
+
+#### Returns
+- list of indeces (if return_patches=False)
+    - index of the polygons within the radius in Model.space
+- list of shapely polygons (if return_patches=True)
+    - the polygons within the radius in Model.space
 
 ### `distance(a, b)`
-
+finds the distance between patches and agents
+#### Parameters
+- a: Agent, index or shapely polygon
+    - the first object
+- b: Agent, index or shapely polygon
+    - the second object
+#### Returns
+- float distance (units depends on shapefile)
 
 # Non-class methods
 ## `create_patches(n_x, n_y, file_directory)`
