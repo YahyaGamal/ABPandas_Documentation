@@ -39,7 +39,7 @@ Initialising an object of type Class_name and printing it.
 object = Class_name()
 print(object)
 ```
-Outcome ("Class_name <id>"):
+Outcome ("Class_name [id]"):
 ```bash
 Class_name 0
 ```
