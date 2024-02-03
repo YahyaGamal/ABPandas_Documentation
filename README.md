@@ -38,7 +38,7 @@ class Child_class_name(abp.Agent):
 - ``
 
 ## Non-class methods
-### `abp.create_patches(n_x: int, n_y: int, file_directory: str)`
+### `abp.create_patches(n_x, n_y, file_directory)`
 (1) Draws a grid of patches as a geopandas dataframe, (2) attaches to each an `"i"` and a `"j"` attribute consituting their location in x and y respectively and (3) saves the geopandas dataframe as a shapefile
 #### Parameters
 - `n_x`: int
