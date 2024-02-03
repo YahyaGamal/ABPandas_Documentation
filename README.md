@@ -50,8 +50,75 @@ Outcome ("Class_name [id]"):
 Class_name 0
 ```
 
-## Model `abp.Model()`
-- ``
+## Model `abp.Model(space, agents)`
+- `space`: geopandas object
+    - a spatial map with polygons read as a geopandas object
+- `agents`: list of Agent objects, default= []
+    - a list of agents currently in the model
+
+### `create_agent(properties)`
+### `create_agents(self, N, properties`
+Create an agent or an `N` number of agents with an input dictionary of properties.
+#### Parameters
+- N: int
+    - the number of agents
+- properties: dictionary, default= {}
+    - a dictionary of the properties of agents
+#### Returns
+- list of Agent objects
+
+### `add_agent(agent, loc_index)`
+### `add_agents(agents, loc_index)`
+Add agent(s) to the model and attach a unique ID to each in the model.
+#### Parameters
+- agent: Agent
+- agents: list of Agent objects
+    - previously created agent(s)
+- loc_index: int, default= None
+    - the index of the patch at which the agent is places
+
+### `agents_with_id(id)`
+Search for agents by id
+#### Parameters
+- id: int or list
+    - the id(s) of the agent to search for
+#### Returns
+an Agent object (if id is int) or a list of Agent objects (if id is list)
+
+### `agents_with_props(condition)`
+Search for agents based on their properties
+Parameters
+----------
+- condition: str
+    - a string representing a condition to be evaluated across all agents in the model
+    - the properties are accessed as `agent.props["property_name"]`
+- condition: function
+    - a function taking in an abp.Agent and returning true if the condition is satisfied
+Returns
+-------
+list of Agent objects fulfilling the condition
+
+### `agents_at(loc_index)`
+    - Find agents based on their location index
+
+### `move_agent(agent, new_loc_index)`
+### `move_agents(agents, new_loc_index)`
+    - Move an agent to a new location
+
+### `remove_agent(agent)`
+### `remove_agents(agents)`
+    - Removes agents from the model
+
+### `save_space(file_directory)`
+    - Saves the space to a shape fi
+
+### `index_at_ij(i, j)`
+    
+### `indices_in_radius(centre, radius, outline_only, return_patches)`
+### `indexes_in_radius(centre, radius, outline_only, return_patches)`
+
+### `distance(a, b)`
+
 
 # Non-class methods
 ## `create_patches(n_x, n_y, file_directory)`
