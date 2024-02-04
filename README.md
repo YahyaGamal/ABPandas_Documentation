@@ -31,15 +31,17 @@ import ABPandas as abp
 - `my_class`: str
     - the name of the agent class in the model (must be defined as a string in the `__init__` function of the child class definition)
 ### Example 1
-Create an agent object with a wealth propery, print the agent and print its properties.
+Create an agent object with a wealth property, print the agent and print its properties.
 ```python
 my_agent = abp.Agent(properties={"Wealth": 100})
 print(my_agent)
+print(my_agent.props)
 print(my_agent.props["Wealth"])
 ```
 Outcome:
 ```bash
 Agent 0
+{"Wealth": 100}
 100
 ```
 
