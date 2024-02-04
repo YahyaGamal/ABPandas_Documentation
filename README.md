@@ -220,18 +220,18 @@ finds the distance between patches and agents
 - float distance (units depends on shapefile)
 
 # Non-class methods
-## `create_patches(n_x, n_y, file_directory)`
+### `create_patches(n_x, n_y, file_directory)`
 (1) Draws a grid of patches as a geopandas dataframe, (2) attaches to each an `"i"` and a `"j"` attribute consituting their location in x and y respectively and (3) saves the geopandas dataframe as a shapefile
-### Parameters
+#### Parameters
 - `n_x`: int
     - number of polygons in the x-axis
 - `n_y`: int
     - number of polygons in the y-axis
 - `file_directory`: str
     - the full directory of the saved file (must end in .shp)
-### Returns
+#### Returns
 - geopandas object
-### Example
+#### Example
 Create a 50 x 50 grid, save it to the python file directory and print the outcome.
 ```python
 import abpandas as abp
