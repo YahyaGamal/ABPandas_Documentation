@@ -43,8 +43,6 @@ Agent 0
 100
 ```
 
-a
-
 ### Example 2
 Child class definition of name "Class_name"
 ```python
@@ -81,6 +79,28 @@ Create an agent or an `N` number of agents with an input dictionary of propertie
     - a dictionary of the properties of agents
 #### Returns
 - list of Agent objects
+#### Example
+Create agents in a model with a Wealth property.
+```python
+# create a model with a 50
+grid= abp.create_patches(50, 50, "50x50_grid.shp")
+model= abp.Model(space=grid)
+# add one agent to the model, print the agents in the model and their wealth
+model.create_agent(properties={"Wealth": 100})
+print(model.agents)
+print([agent.props["Wealth"] for agent in model.agents])
+# add two agents to the model, print the agents in the model and their wealth
+model.create_agents(N=2, properties={"Wealth": 200})
+print(model.agents)
+print([agent.props["Wealth"] for agent in model.agents])
+```
+Outcomes:
+```bash
+[Agent 0]
+[100]
+[Agent 0, Agent 1, Agent 2]
+[100, 200, 200]
+```
 
 ### `add_agent(agent, loc_index)`
 ### `add_agents(agents, loc_index)`
@@ -91,6 +111,24 @@ Add agent(s) to the model and attach a unique ID to each in the model.
     - previously created agent(s)
 - `loc_index`: int, default= None
     - the index of the patch at which the agent is places
+#### Example
+Add agents to a model and print the agents in the model
+```python
+# create a model with a 50
+grid= abp.create_patches(50, 50, "50x50_grid.shp")
+model= abp.Model(space=grid)
+# add one agent to the model
+model.add_agent(agent=abp.Agent())
+print(model.agents)
+# add two agents to the model
+model.add_agents(agents=[abp.Agent(), abp.Agent()])
+print(model.agents)
+```
+Outcome:
+```bash
+[Agent 0]
+[Agent 0, Agent 1, Agent 2]
+```
 
 ### `agents_with_id(id)`
 Search for agents by id
