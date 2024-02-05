@@ -182,15 +182,30 @@ an Agent object (if id is int) or a list of Agent objects (if id is list)
 ---
 
 ### `agents_with_props(condition)`
-Search for agents based on their properties
+Search for agents based on their properties using a conditional function
 #### Parameters
-- `condition`: str
-    - a string representing a condition to be evaluated across all agents in the model
-    - the properties are accessed as `agent.props["property_name"]`
 - `condition`: function
     - a function taking in an abp.Agent and returning true if the condition is satisfied
 #### Returns
 list of Agent objects fulfilling the condition
+#### Example
+Find bankrupt investors with `props["wealth"] == 0`
+```python
+# create a model with a 50 x 50 grid and an investor and a generic agent
+grid= abp.create_patches(50, 50, "50x50_grid.shp")
+model= abp.Model(space=grid, agents=[Investor({"wealth": 0}), abp.Agent({"wealth": 0}), Investor({"wealth": 100})])
+# function checking if agent is bankrupt (has 0 wealth)
+def bankrupt(agent):
+    if agent.props["wealth"] <= 0: return True
+    else: return False
+# find the agents that are bankrupt in the model
+bankrupt_agents = model.agents_with_props(bankrupt)
+print(bankrupt_agents)
+```
+Outcome:
+```bash
+[Investor 0, Agent 1]
+```
 
 ---
 
@@ -201,6 +216,25 @@ Find agents based on their location index
     - the index of the polygon in the space
 #### Returns
 - list of Agent objects located in input index
+#### Example
+Add agents at indices 100 and 200, and find agents at index 100.
+```python
+# create a model with a 50 x 50 grid and an investor and a generic agent
+grid = abp.create_patches(50, 50, "50x50_grid.shp")
+model = abp.Model(space=grid)
+# add two agents at two different location indices
+model.add_agents(agents=[abp.Agent(), abp.Agent()], loc_index=100)
+model.add_agent(agent=abp.Agent(), loc_index=200)
+# find the agents at location index 100
+agents_at_loc = model.agents_at(loc_index=100)
+print(model.agents)
+print(agents)
+```
+Outcome:
+```bash
+[Agent 0, Agent 1, Agent 2]
+[Agent 0, Agent 1]
+```
 
 ---
 
