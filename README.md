@@ -99,7 +99,7 @@ print(model.investors)
 ```
 Outcome:
 ```bash
-[Investor 0, Agent 0]
+[Investor 0, Agent 1]
 [Investor 0]
 ```
 Check defining a child class from abp.Agent class [here](#example-2).
