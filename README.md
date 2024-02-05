@@ -86,6 +86,23 @@ Investor 0
     - initialised on introducing an new agent sub-class
     - e.g., adding an house `Agent` with `Agent.my_class="house"` creates a model attribute `Model.houses`
     - note that the model adds an `"s"` to the str in `Agent.my_class` regardless of gramatical considerations
+#### Example
+Create a model with an investor and a generic agent, then print Model.agents and Model.invetors.
+```python
+# create a model with a 50 x 50 grid and an investor and a generic agent
+grid= abp.create_patches(50, 50, "50x50_grid.shp")
+model= abp.Model(space=grid, agents=[Investor(), abp.Agent()])
+# print agents
+print(model.agents)
+# print investors
+print(model.investors)
+```
+Outcome:
+```bash
+[Investor 0, Agent 0]
+[Investor 0]
+```
+Check defining a child class from abp.Agent class [here](#example-2).
 
 ---
 
