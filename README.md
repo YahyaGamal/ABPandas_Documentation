@@ -24,13 +24,17 @@ import ABPandas as abp
 # Classes
 
 ## Agent `abp.Agent(properties)`
+#### Inputs
 - `properties`: dictionary, default= {}  
     - the properties of the agent object (must be a dictionary input for the abp.Model methods to function properly)
-- `location_index`: int, default= None  
+#### Attributes
+- `Agent.props`: dict, default= {}
+    - the properties of the agent (assigned as the `properties` input attribute at initialising the agent)
+- `Agent.location_index`: int, default= None  
     - the index to which the agent is assigned (accessed by the Model class when creating or moving the Agent)
-- `my_class`: str
+- `Agent.my_class`: str
     - the name of the agent class in the model (must be defined as a string in the `__init__` function of the child class definition)
-### Example 1
+#### Example 1
 Create an agent object with a wealth property, print the agent and print its properties.
 ```python
 my_agent = abp.Agent(properties={"Wealth": 100})
@@ -45,31 +49,45 @@ Agent 0
 100
 ```
 
-### Example 2
-Child class definition of name "Class_name"
+#### Example 2
+Child class definition of name "Investor"
 ```python
-class Class_name(abp.Agent):
+class Investor(abp.Agent):
     def __init__(self, properties="default"):
         # pass the values to the parent agent
         super().__init__(properties)
         # pass the child class name to my_class 
-        self.my_class = "Class_name"
+        self.my_class = "Investor"
 ```
 Initialising an object of type Class_name and printing it.
 ```python
-object = Class_name()
+object = Investor()
 print(object)
 ```
-Outcome ("Class_name [id]"):
+Outcome:
 ```bash
-Class_name 0
+Investor 0
 ```
 
+---
+
 ## Model `abp.Model(space, agents)`
+#### Inputs
 - `space`: geopandas object
     - a spatial map with polygons read as a geopandas object
 - `agents`: list of Agent objects, default= []
     - a list of agents currently in the model
+#### Attributes
+- `Model.space`: geopandas object
+    - assigned as the input `space`
+- `Model.agents`: list of Agent objects, default= []
+    - assigned as the input `agents`
+- `<Agent.my_class>s`: list of agents of a specific class
+    - initialised on introducing an new agent sub-class
+    - e.g., adding an house `Agent` with `Agent.my_class="house"` creates a model attribute `Model.houses`
+    - note that the model adds an `"s"` to the str in `Agent.my_class` regardless of gramatical considerations
+
+---
 
 ### `create_agent(properties)`
 ### `create_agents(N, properties`
@@ -104,6 +122,8 @@ Outcomes:
 [100, 200, 200]
 ```
 
+---
+
 ### `add_agent(agent, loc_index)`
 ### `add_agents(agents, loc_index)`
 Add agent(s) to the model and attach a unique ID to each in the model.
@@ -132,6 +152,8 @@ Outcome:
 [Agent 0, Agent 1, Agent 2]
 ```
 
+---
+
 ### `agents_with_id(id)`
 Search for agents by id
 #### Parameters
@@ -139,6 +161,8 @@ Search for agents by id
     - the id(s) of the agent to search for
 #### Returns
 an Agent object (if id is int) or a list of Agent objects (if id is list)
+
+---
 
 ### `agents_with_props(condition)`
 Search for agents based on their properties
@@ -151,6 +175,8 @@ Search for agents based on their properties
 #### Returns
 list of Agent objects fulfilling the condition
 
+---
+
 ### `agents_at(loc_index)`
 Find agents based on their location index
 #### Parameters
@@ -158,6 +184,8 @@ Find agents based on their location index
     - the index of the polygon in the space
 #### Returns
 - list of Agent objects located in input index
+
+---
 
 ### `move_agent(agent, new_loc_index)`
 ### `move_agents(agents, new_loc_index)`
@@ -168,6 +196,8 @@ Move an agent to a new location
 - `new_loc_index`: int
     - the index of the polygon in the sapce to which agents will move
 
+---
+
 ### `remove_agent(agent)`
 ### `remove_agents(agents)`
 Removes agents from the model
@@ -175,11 +205,15 @@ Removes agents from the model
 - `agent(s)`: an Agent object or a list of Agent objects 
     - the agents to remove from the model
 
+---
+
 ### `save_space(file_directory)`
 Saves the space to a shape file or a pkl file
 #### Parameters
 - `file_directory`: str
     - the full directory of the file to be saved (must end in .shp or .pkl)
+
+---
 
 ### `index_at_ij(i, j)`
 Finds the patches based on their i and j location (i and j are the indices of a patch in x-direction and y-direction respectively).  
@@ -191,7 +225,9 @@ i and j are created during the create_patches() function.
     - the index of the patch in y-direction (starts from 1)
 #### Returns
 - int index of the polygon in the abpandas.space geodataframe
-    
+
+---
+
 ### `indices_in_radius(centre, radius, outline_only, return_patches)`
 ### `indexes_in_radius(centre, radius, outline_only, return_patches)`
 finds the patches (polygons) within a given radius
@@ -204,12 +240,13 @@ finds the patches (polygons) within a given radius
     - limit the outcome to the outline of the create_space generated polygons
 - `return_patches`: bool, default=False
     - return a list of shapely geometries instead of indices
-
 #### Returns
 - list of indeces (if return_patches=False)
     - index of the polygons within the radius in Model.space
 - list of shapely polygons (if return_patches=True)
     - the polygons within the radius in Model.space
+
+---
 
 ### `distance(a, b)`
 finds the distance between patches and agents
@@ -220,6 +257,8 @@ finds the distance between patches and agents
     - the second object
 #### Returns
 - float distance (units depends on shapefile)
+
+---
 
 # Non-class methods
 ### `create_patches(n_x, n_y, file_directory)`
@@ -258,6 +297,8 @@ Outcome:
 
 [2500 rows x 4 columns]
 ```
+
+---
 
 
 
